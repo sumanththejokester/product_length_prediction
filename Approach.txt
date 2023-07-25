@@ -1,0 +1,19 @@
+A Machine learning model to predict the 'PRODUCT_LENGTH' of a product based on features such as 'TITLE', 'DESCRIPTION', 'BULLET_POINTS', and 'PRODUCT_TYPE_ID' using Random Forest Regressor Algorithm. 
+
+• Libraries Used : Numpy, Pandas, sklearn for train_test_split for data splitting , CountVectorizer for text feature extraction, RandomForestRegressor for regression model and metrics for evaluation.
+
+• Loaded data into 'train' and 'test' dataframes. 
+
+• Handled missing values : In the 'TITLE' and 'DESCRIPTION' of test dataframe using forward-fill method and backward fill method. 'BULLET_POINTS' with 'Unknown'. 'PRODUCT_TYPE_ID' with median of the column (not preferrable method but used just to fill the data. 
+
+• Label Encoding : The categorical variables, 'TITLE', 'DESCRIPTION', 'BULLET_POINTS', and 'PRODUCT_TYPE_ID', in both the 'train' and 'test' dataframes are label-encoded using a loop and the LabelEncoder from sklearn.preprocessing. (Label Encoding is a process of converting categorical variables into numerical representations. 
+
+• Data Splitting : The 'train' dataframe is split into training and testing sets using train_test_split from sklearn.model_selection. The feature matrix X is created by dropping the columns 'TITLE', 'DESCRIPTION', 'BULLET_POINTS', and 'PRODUCT_TYPE_ID' from the 'train' dataframe, and the target variable y is set to the 'PRODUCT_LENGTH' column. The same is done for the 'test' dataframe, and the resulting feature matrices are stored in X_train and X_test, and the target variables are stored in y_train and y_test, respectively.
+
+• Model is trained : Random Forest Regressor model is used with 100 estimators and a random state of 42 using RandomForestRegressor from sklear.ensemble. 
+
+• Model predicted : The trained model is used to predict the 'PRODUCT_LENGTH' values for the test data using the predict() method, and the predicted values are stored in y_pred.
+
+• Evaluation: The predicted 'PRODUCT_LENGTH' values are used to create a dataframe results_df with columns 'PRODUCT_ID' and 'PRODUCT_LENGTH' that contains the index values from the test data and the corresponding predicted 'PRODUCT_LENGTH' values. The actual 'PRODUCT_LENGTH' values from the test data are stored in y_test. The Mean Absolute Percentage Error (MAPE) is calculated using metrics.mean_absolute_percentage_error() to evaluate the accuracy of the model predictions. The model's R^2 score is calculated using model.score() on the training data. 
+
+• Feature Engineering : LabelEncoding is used for columns  'TITLE', 'DESCRIPTION', 'BULLET_POINTS', and 'PRODUCT_TYPE_ID' and later they're dropped from the training and test data as they're not needed as features for the model
